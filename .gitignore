@@ -1,0 +1,11 @@
+### Test
+log.html
+output.xml
+playwright-log.txt
+interactive_console_output.xml
+
+### VS Code ###
+.vscode/
+
+### Mac OS ###
+.DS_Store
