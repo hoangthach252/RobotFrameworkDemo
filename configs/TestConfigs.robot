@@ -7,5 +7,5 @@ ${HEADLESS}            false
 ${WINDOW_WIDTH}        1440
 ${WINDOW_HEIGHT}       818
 
-# Selenium settings
+# Playwright settings
 ${BROWSER_TIMEOUT}    15

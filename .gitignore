@@ -3,6 +3,7 @@ log.html
 output.xml
 playwright-log.txt
 interactive_console_output.xml
+pabot_results/
 
 ### VS Code ###
 .vscode/

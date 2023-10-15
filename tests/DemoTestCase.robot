@@ -1,5 +1,6 @@
 *** Setting ***
 Library     JSONLibrary
+Library    ../customLibs/DemoLibrary.py
 Resource    ../configs/TestConfigs.robot
 Resource    ../pages/CommonPage.robot
 Resource    ../pages/LoginPage.robot
@@ -21,19 +22,22 @@ Documentation   This suite includes 2 requested test cases
 *** Test Cases ***
 
 Scenario1: Verify the shopping cart quantity is updated properly when adding/removing item.    
-    [tags]  test01
+    [Tags]  test01
     ${login_user_json}    Load JSON From File    ${CURDIR}/../user_data/login_users.json
     
     Given The User Opens The Login Page
     And Login To The Application With Credential    &{login_user_json}[standard]
-    When Add Item "Sauce Labs Backpack" Into/From Shoping Cart
+    When Add Items Below Into/From Shoping Cart    
+    ...    Sauce Labs Backpack
     Then Shopping Cart Should Have "1" Item Added
-    When Remove Item "Sauce Labs Backpack" Into/From Shoping Cart
+    When Remove Items Below Into/From Shoping Cart    
+    ...    Sauce Labs Backpack
     Then Shopping Cart Should Have "0" Item Added
+    Sleep    5s
 
 
 Scenario2: Verify that the cart is checked out successfully.
-    [tags]  test02
+    [Tags]  test02
     ${login_user_json}    Load JSON From File    ${CURDIR}/../user_data/login_users.json
     ${user_address_json}    Load JSON From File    ${CURDIR}/../user_data/user_address.json
 
@@ -49,4 +53,10 @@ Scenario2: Verify that the cart is checked out successfully.
     Then Quantity Of Each Item And Total Payment Are Shown
     When The User Finishes The Checkout
     Then The Checkout Complete Message Is Shown    
-    ...    Thank you for your order!
+    ...    Thank you for your order!   
+    Sleep    5s
+
+
+
+Scenario3: custom Library Demo
+    my_keyword    ThachArg1

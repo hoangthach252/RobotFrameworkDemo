@@ -45,3 +45,20 @@ This project is developed to demontrate Web UI automation using Robot Framework 
  `thachhoang@Thachs-Air RobotFwDemo % robot tests/DemoTestCase.robot`
 
 
+## Run Tests in parallel using Pabot plugin
+1. install plugin pabot
+ `thachhoang@Thachs-Air RobotFwDemo % pip install -U robotframework-pabot`
+2. run tests in parallel of test level
+ `thachhoang@Thachs-Air RobotFwDemo % pabot --testlevelsplit tests/DemoTestCase.robot`
+3. run tests in parallel of suite level
+ `thachhoang@Thachs-Air RobotFwDemo % pabot tests`
+
+
+ ## Run Tests using Docker
+1. create Dockerfile with these 2 commands below:
+ `FROM marketsquare/robotframework-browser:latest`
+ `RUN pip3 install --no-cache-dir --user --upgrade robotframework-jsonlibrary`
+2. build a custom docker image from base image marketsquare/robotframework-browser
+ `thachhoang@Thachs-Air RobotFwDemo % docker build -t marketsquare/robotframework-browser:custom .`
+3. run tests in docker container 
+ `thachhoang@Thachs-Air RobotFwDemo % docker run --rm -v $(pwd)/:/test --ipc=host --user pwuser --security-opt seccomp=seccomp_profile.json marketsquare/robotframework-browser:custom bash -c "robot --outputdir /test/output /test" `

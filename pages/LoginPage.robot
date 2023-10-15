@@ -8,8 +8,9 @@ ${LOGIN_BTN}                  id=login-button
 
 *** Keywords ***
 Login To The Application With Credential    [Arguments]    &{credential_dict}
+    ${password}    Set Variable    ${credential_dict}[password]
     Fill Text    ${USERNAME_TEXT_INPUT}    ${credential_dict}[username]
-    Fill Text    ${PASSWORD_TEXT_INPUT}    ${credential_dict}[password]
+    Fill Secret    ${PASSWORD_TEXT_INPUT}    $password
     Click        ${LOGIN_BTN}
 
 
