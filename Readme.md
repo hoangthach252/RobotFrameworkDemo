@@ -26,16 +26,18 @@ This project is developed to demontrate Web UI automation using Robot Framework 
 
     `> python get-pip.py`
 
-4. Install Browser library and JSONLibrary from PyPi with pip.
+4. install pipenv
+    `> pip install --user pipenv`
+5. Install Dependencies such as Browser library and JSONLibrary from Pipfile.lock.
 
-    `> pip install robotframework-browser`
-    `> pip install robotframework-jsonlibrary`
+```
+> pipenv shell 
+> pipenv sync
+```
     
-5. Initialize the Browser library.
-
+6. Initialize the Browser library.
     `> rfbrowser init`
-    
-6. Download and install VSCode [VSCode](https://code.visualstudio.com/docs/?dv=osx "VSCode").
+7. Download and install VSCode [VSCode](https://code.visualstudio.com/docs/?dv=osx "VSCode").
 7. Install [Robot Framework Language Server](https://marketplace.visualstudio.com/items?itemName=robocorp.robotframework-lsp) extension from VSCode's Marketplace
 
 
@@ -56,8 +58,10 @@ This project is developed to demontrate Web UI automation using Robot Framework 
 
  ## Run Tests using Docker
 1. create Dockerfile with these 2 commands below:
- `FROM marketsquare/robotframework-browser:latest`
- `RUN pip3 install --no-cache-dir --user --upgrade robotframework-jsonlibrary`
+```
+ FROM marketsquare/robotframework-browser:latest
+ RUN pip3 install --no-cache-dir --user --upgrade robotframework-jsonlibrary
+```
 2. build a custom docker image from base image marketsquare/robotframework-browser
  `thachhoang@Thachs-Air RobotFwDemo % docker build -t marketsquare/robotframework-browser:custom .`
 3. run tests in docker container 
